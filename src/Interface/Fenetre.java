@@ -1,4 +1,5 @@
 package Interface;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -28,7 +29,7 @@ public class Fenetre extends Frame implements ActionListener{
 		this.setLayout(new BorderLayout());
 
 
-		//Configuration pour les panels sur les cotés du plateau
+		//Configuration pour les panels sur les cotï¿½s du plateau
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 1;
@@ -40,33 +41,33 @@ public class Fenetre extends Frame implements ActionListener{
 		joueurs.add(joueur);
 		joueurs.add(joueur);
 		
-		//Création du plateau au centre :
+		//Crï¿½ation du plateau au centre :
 		Plateau plateau = new Plateau(joueurs);
 		plateau.setMinimumSize(new Dimension(1000, 1000));
 		
 		
 		
-		//Création panel player left
+		//Crï¿½ation panel player left
 		JPanel pjl = new JPanel(new GridLayout(2,1));
 				
-		//Création du player top-left
+		//Crï¿½ation du player top-left
 		Player ptl = new Player(joueur);
 		pjl.add(ptl);
 		
-		//Création du player bot-left
+		//Crï¿½ation du player bot-left
 		Player pbl = new Player(joueur);
 		pjl.add(pbl);
 		
 		
 		
-		//Création panel player right
+		//Crï¿½ation panel player right
 		JPanel pjr = new JPanel(new GridLayout(2, 1));
 		
-		//Création du player top-right
+		//Crï¿½ation du player top-right
 		Player ptr = new Player(joueur);
 		pjr.add(ptr);
 		
-		//Création du player bot-right
+		//Crï¿½ation du player bot-right
 		Player pbr = new Player(joueur);
 		pjr.add(pbr);
 		

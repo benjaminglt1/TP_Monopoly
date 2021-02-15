@@ -1,3 +1,6 @@
+package monopoly;
+import java.awt.Color;
+
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("e7f62ec2-42ce-4889-9435-fcfdd3937788")
@@ -25,6 +28,26 @@ public class Propriete extends Achetables {
 
     @objid ("47a6664f-d7b5-4871-8630-bbc0b9d9c080")
     private Etat etat;
+
+	public Color color;
+
+	public int xNom;
+
+	public String nom;
+
+	public int terrainNu;
+
+	public int uneMaison;
+
+	public int deuxMaisons;
+
+	public int troisMaisons;
+
+	public int quatreMaisons;
+
+	public int hotel;
+
+	public int prixMaison;
 
     @objid ("d22f6a51-1d56-47e5-9fc0-d60378bc4bad")
     public boolean construire() {

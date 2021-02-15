@@ -1,3 +1,4 @@
+package monopoly;
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("eedbb245-3fcf-4834-8343-d6daee850c64")

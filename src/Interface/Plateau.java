@@ -49,7 +49,7 @@ public class Plateau extends JPanel{
 		for(int i=0; i<joueurs.size(); i++) {
 			
 			//TODO calculer xCase et yCase
-			int numCase = joueurs.get(i).position;
+			int numCase = joueurs.get(i).getPosition();
 			xCase = xDepart + calculXCase(numCase);
 			yCase = yDepert + calculYCase(numCase);
 			

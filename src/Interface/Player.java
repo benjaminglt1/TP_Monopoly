@@ -32,7 +32,7 @@ public class Player extends JPanel {
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.white);
 		
-		//Création partie info joueur
+		//Crï¿½ation partie info joueur
 		JPanel pij = new JPanel(new GridBagLayout());
 		pij.setBackground(Color.WHITE);
 		
@@ -56,7 +56,7 @@ public class Player extends JPanel {
 		this.add(pij, BorderLayout.NORTH);
 		
 		
-		//Création partie propriete
+		//Crï¿½ation partie propriete
 		
 		JPanel p = new JPanel(new GridLayout(2, 4));
 		
