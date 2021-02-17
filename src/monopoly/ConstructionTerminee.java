@@ -8,13 +8,16 @@ public class ConstructionTerminee extends Etat {
     }
 
     @objid ("6c2a688d-d223-4248-8e63-b93c3ea04fb2")
-    public void payerLoyer() {
+    public void payerLoyer(Joueur j) {
+    	long aPayer = calculerLoyer();
+    	j.debiter((int) aPayer);
+    	this.propriete.getProprietaire().crediter((int) aPayer);
     }
 
-    @objid ("c739dc62-a0d3-4681-9bfd-f937f8c44859")
-    public boolean estProprietaire() {
-		return false;
+    public long calculerLoyer() {
+    	return this.propriete.getLoyers(5);
     }
+    
 
     @objid ("7e191488-a1c4-44fb-a310-a374a34a4d94")
     public void setEtat() {

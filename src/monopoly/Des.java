@@ -1,4 +1,6 @@
 package monopoly;
+import java.util.Random;
+
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("6a2bdce9-a28e-4261-8d46-1b05207252e9")
@@ -11,7 +13,10 @@ public class Des {
 
     @objid ("ec2f47d3-c0db-4b05-9419-7341a367948b")
     public Des lancerDes() {
-		return null;
+    	Random random = new Random();
+    	de1 = random.nextInt(6)+1;
+    	de2 = random.nextInt(6)+1;
+		return this;
     }
 
     @objid ("ed603c71-d53a-4ecc-a033-1b42c90b315f")
@@ -37,5 +42,13 @@ public class Des {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.de2 = value;
     }
+
+	public boolean verifDouble() {
+		if(de1 == de2) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 
 }

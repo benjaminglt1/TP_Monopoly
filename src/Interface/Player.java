@@ -67,8 +67,8 @@ public class Player extends JPanel {
 		int k = 0;
 		while(k < limite) {
 			ProprieteCanvas pc;
-			if(k < j.propriete.size()) {
-				pc = new ProprieteCanvas(j.propriete.get(k));
+			if(k < j.getPropriete().size()) {
+				pc = new ProprieteCanvas((Propriete) j.getPropriete().get(k));
 			}
 			else {
 				pc = new ProprieteCanvas(new Propriete());

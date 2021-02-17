@@ -10,29 +10,33 @@ public class Joueur {
 	private int position;
 
     @objid ("5d4bdb3a-b279-48b1-9e79-c9a443789b72")
-	public int argent;
+	private int argent;
 
     @objid ("4af61eab-b76c-43c0-8495-a1625882ca7d")
-    private List<Achetables> achetables = new ArrayList<Achetables> ();
+    private List<Achetables> propriete = new ArrayList<Achetables> ();
 
-	public Image pionImg;
+	public Image pionImg;//
 
-	public String pion;
+	public String pion;//
 
-	public String name;
-
-	public ArrayList<Propriete> propriete;
+	public String name;//
+	
+	public Joueur() {
+	}
 
     @objid ("a95e532e-c8c3-4211-a5ab-5107a18be4d4")
     public void initPositionJoueur(int positionDepart) {
+    	this.position = positionDepart;
     }
 
     @objid ("680d5cc7-1782-4a88-8aec-34f0cad55e66")
     public void initArgent(int argentDepart) {
+    	this.argent = argentDepart;
     }
 
     @objid ("4a8932f0-7df3-4902-95c1-541307a8f7c6")
     public void debiter(int montant) {
+    	this.argent -= montant;
     }
 
     @objid ("049212bf-1921-4772-b633-66e3b8ca7b24")
@@ -41,7 +45,9 @@ public class Joueur {
 
     @objid ("51cec632-3125-47cb-8d3f-a25247f3ed7e")
     public void crediter(int montant) {
+    	this.argent -= montant;
     }
+    
 
     @objid ("a64d49ef-9838-4fff-851f-0d2c8dce8387")
 	public
@@ -75,5 +81,13 @@ public class Joueur {
     @objid ("55335325-66a2-48ab-8921-91c7d15cc459")
     public void ajouterPropriete() {
     }
+
+	public List<Achetables> getPropriete() {
+		return propriete;
+	}
+
+	public void setPropriete(List<Achetables> propriete) {
+		this.propriete = propriete;
+	}
 
 }

@@ -12,16 +12,15 @@ public class NonConstructible extends Etat {
     }
 
     @objid ("f051e7a7-4baa-455c-b529-e6c2770a4f03")
-    public void payerLoyer() {
+    public void payerLoyer(Joueur j) {
+    	long aPayer = calculerLoyer();
+    	j.debiter((int) aPayer);
+    	this.propriete.getProprietaire().crediter((int) aPayer);
     }
 
     @objid ("99fda1aa-efb9-4639-bb88-1de2212d6a24")
-    public void calculerLoyer() {
-    }
-
-    @objid ("d3c770d7-ec8e-4331-b28b-3f0d0a104f81")
-    public boolean estProprietaire() {
-		return false;
+    public long calculerLoyer() {
+		return this.propriete.getLoyers(0);
     }
 
     @objid ("9fd8306d-2d55-48cc-be04-f4e5a6569e95")

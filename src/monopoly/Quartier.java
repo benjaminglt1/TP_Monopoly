@@ -8,13 +8,14 @@ public class Quartier {
     @objid ("18b84395-5fbf-46c4-b259-6a52ed5f47e4")
     private String couleur;
 
-    @objid ("53057bc0-b021-46fe-89b7-22667b673cb9")
-    private List<Joueur> joueur = new ArrayList<Joueur> ();
-
     @objid ("a1c4326d-1b34-493d-96df-3402220327ab")
-    private List<Propriete> propriete = new ArrayList<Propriete> ();
+    private ArrayList<Propriete> propriete = new ArrayList<Propriete>();
 
-    @objid ("fc0ff36b-24a8-4128-bbd7-20e29d13c343")
+    public Quartier(String couleur) {
+		this.couleur = couleur;
+	}
+
+	@objid ("fc0ff36b-24a8-4128-bbd7-20e29d13c343")
     public void rendreConstructible() {
     }
 
@@ -33,6 +34,10 @@ public class Quartier {
     void setCouleur(String value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.couleur = value;
+    }
+    
+    void addPropriete(Propriete p) {
+    	this.propriete.add(p);
     }
 
 }

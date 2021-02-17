@@ -17,5 +17,9 @@ public class Depart extends Action {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.argentAjoute = value;
     }
+    
+    public void actionSurCase(Joueur j) {
+    	j.crediter(argentAjoute);
+    }
 
 }

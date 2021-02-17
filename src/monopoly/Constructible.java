@@ -13,16 +13,16 @@ public class Constructible extends Etat {
     }
 
     @objid ("e6989142-e342-4e97-aae6-c023def5cce7")
-    public void payerLoyer() {
+    public void payerLoyer(Joueur j) {
+    	long aPayer = calculerLoyer();
+    	j.debiter((int) aPayer);
+    	this.propriete.getProprietaire().crediter((int) aPayer);
+    	
     }
 
     @objid ("eedb7f3b-fdcf-4dbb-b023-b7f1ed8961c0")
-    public void calculerLoyer() {
-    }
-
-    @objid ("350e6f92-41ad-4dc6-a9af-87af8f1e7631")
-    public boolean estProprietaire() {
-		return false;
+    public long calculerLoyer() {
+    	return this.propriete.getLoyers(0)*2;
     }
 
     @objid ("24bcbd54-c4e4-4b80-a21c-b6851c33453b")

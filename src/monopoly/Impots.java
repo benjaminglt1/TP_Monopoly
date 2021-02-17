@@ -6,7 +6,11 @@ public class Impots extends Case {
     @objid ("4e32a37f-0b26-4bfc-aede-f40fdd5daa0b")
     private int argentRetire;
 
-    @objid ("7fb6a13a-d192-42ae-9357-e6b2126219fa")
+    public Impots(int i) {
+		// TODO Auto-generated constructor stub
+	}
+
+	@objid ("7fb6a13a-d192-42ae-9357-e6b2126219fa")
     int getArgentRetire() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.argentRetire;
