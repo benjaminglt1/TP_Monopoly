@@ -9,6 +9,16 @@ public class Vendu extends Etat {
 
     @objid ("49ecab1a-5280-4a8e-9f51-488faa4981a9")
     public void setEtat() {
+    	estConstructible();
+    }
+    
+    public void estConstructible() {
+    	if(!((this.propriete.getQuartier()).verifConstructible())) {
+    		this.propriete.setEtat(new NonConstructible());
+    	}else {
+    		this.propriete.setEtat(new Constructible());
+    	}
+    	
     }
 
 }

@@ -6,6 +6,7 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("8c51a0e5-13d1-4392-93d7-7c8c96a767a8")
 public class Joueur {
+	private Partie partie;
     @objid ("7ae12daf-64c6-4380-b302-cdd1dafec2cd")
 	private int position;
 
@@ -19,9 +20,11 @@ public class Joueur {
 
 	public String pion;//
 
-	public String name;//
+	private String name;//
 	
-	public Joueur() {
+	public Joueur(String nom, Partie partie) {
+		this.name = nom;
+		this.partie = partie;
 	}
 
     @objid ("a95e532e-c8c3-4211-a5ab-5107a18be4d4")
@@ -79,7 +82,8 @@ public class Joueur {
     }
 
     @objid ("55335325-66a2-48ab-8921-91c7d15cc459")
-    public void ajouterPropriete() {
+    public void ajouterPropriete(Propriete propriete) {
+    	this.propriete.add(propriete);
     }
 
 	public List<Achetables> getPropriete() {
@@ -88,6 +92,15 @@ public class Joueur {
 
 	public void setPropriete(List<Achetables> propriete) {
 		this.propriete = propriete;
+	}
+
+	String getName() {
+		return this.name;
+	}
+
+	Partie getPartie() {
+		return this.partie;
+		
 	}
 
 }

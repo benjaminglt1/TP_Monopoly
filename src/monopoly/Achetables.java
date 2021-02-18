@@ -6,11 +6,11 @@ public abstract class Achetables extends Case {
     @objid ("554628ea-dc32-42e5-9a0e-fe785f87b9d1")
     protected long prixAchat;
     
-    protected String nom;
+    //protected String nom;
 
 
     @objid ("3e0a18b8-7367-4ce8-b7a9-8876b6d40334")
-    protected Joueur proprietaire;
+    protected Joueur proprietaire = null;
 
     @objid ("0e378a7f-fe5c-41d3-9865-633efdcf6c50")
     public void acheter() {
@@ -39,7 +39,11 @@ public abstract class Achetables extends Case {
 
     @objid ("0806a365-2b9b-40ad-ab9a-8ce7cb71f10d")
     public boolean estLibre() {
-		return false;
+		if(this.proprietaire != null) {
+			return false;
+			
+		}
+		return true;
     }
 
     @objid ("88a2a229-a3b8-40d8-bf02-5f61a849a549")

@@ -5,6 +5,10 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 public class Depart extends Action {
     @objid ("a83f4662-9e64-4bd7-987b-d799df234d3b")
     private int argentAjoute;
+    
+    public Depart() {
+    	this.nom = "Départ";
+    }
 
     @objid ("9b176622-a745-4cec-9c41-3f1888261674")
     int getArgentAjoute() {
@@ -19,6 +23,7 @@ public class Depart extends Action {
     }
     
     public void actionSurCase(Joueur j) {
+    	System.out.println("On passe par la case départ");
     	j.crediter(argentAjoute);
     }
 

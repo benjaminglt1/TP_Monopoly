@@ -168,7 +168,8 @@ public class Plateau {
     	if(oldPos>joueur.getPosition()) {
     		plateau.get(0).actionSurCase(joueur);
     	}
-    	plateau.get(joueur.getPosition()).actionSurCase(joueur);
+    	System.out.println("Case : "+(plateau.get(joueur.getPosition())).getNom());
+    	//plateau.get(joueur.getPosition()).actionSurCase(joueur);
     }
 
 }

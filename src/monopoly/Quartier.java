@@ -21,7 +21,15 @@ public class Quartier {
 
     @objid ("cb9413ff-6929-4400-a2d0-6fabe5eab040")
     public boolean verifConstructible() {
-		return false;
+		Joueur prop = propriete.get(0).getProprietaire();
+    	for(int i=1;i<propriete.size();i++) {
+			if(propriete.get(i).getProprietaire().equals(prop)) {
+				
+			}else {
+				return false;
+			}
+		}
+    	return true;
     }
 
     @objid ("f33f85df-6fa4-45c0-93bb-8bcee247bd92")

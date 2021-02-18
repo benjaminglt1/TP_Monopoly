@@ -61,6 +61,7 @@ public class Propriete extends Achetables {
     @objid ("bb16bcc1-f778-42b2-b0be-eb4003fd5e72")
     public void setEtat(Etat etat) {
     	this.etat = etat;
+    	this.etat.setEtat();
     }
 
     @objid ("e1fbe937-96e5-4f5c-8d66-541ffdf508aa")
@@ -100,6 +101,11 @@ public class Propriete extends Achetables {
 	public long getLoyers(int i) {
 		// TODO Auto-generated method stub
 		return this.loyers.get(i);
+	}
+
+	public Object getQuartier() {
+		// TODO Auto-generated method stub
+		return this.quartier;
 	}
 
 

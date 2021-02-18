@@ -8,6 +8,8 @@ public class Impots extends Case {
 
     public Impots(int i) {
 		// TODO Auto-generated constructor stub
+    	this.argentRetire = i;
+    	this.nom = "Impot";
 	}
 
 	@objid ("7fb6a13a-d192-42ae-9357-e6b2126219fa")
@@ -20,6 +22,10 @@ public class Impots extends Case {
     void setArgentRetire(int value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.argentRetire = value;
+    }
+    
+    public void actionSurCase(Joueur j) {
+    	j.debiter(argentRetire);
     }
 
 }

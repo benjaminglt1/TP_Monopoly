@@ -25,6 +25,34 @@ public class Gare extends Achetables {
     public void updateGare(ArrayList<Gare> g) {
     	this.gare = g;
     }
+    
+    public void actionSurCase(Joueur j) {
+    	if(!estLibre()) {
+    		if(!estProprietaire(j)) {
+    			System.out.println("Payer le loyer");
+    			payerLoyer(j);
+    		}
+    	}
+    	
+    }
+    
+    public void payerLoyer(Joueur j) {
+    	long aPayer = calculerLoyer(j);
+    	j.debiter((int) aPayer);
+    	this.getProprietaire().crediter((int) aPayer); 
+    }
+    
+    public long calculerLoyer(Joueur j) {
+		int cptGare=0;
+    	for(int i=0;i<this.gare.size();i++){
+			if(gare.get(i).getProprietaire().equals(this.getProprietaire())) {
+				cptGare++;
+			}
+		}
+    	
+    	return this.loyers.get(cptGare);
+    	
+    }
 	
 
 }

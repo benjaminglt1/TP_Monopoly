@@ -18,12 +18,13 @@ public class Partie {
     private Plateau plateau;
     private int nbJ;
     private int jCourant;
+    private Scanner sc = new Scanner(System.in);
 
     @objid ("dd810a91-7a46-49b1-98f4-9ef1afd6c8e2")
     private List<Joueur> joueurs = new ArrayList<Joueur> ();
 
     @objid ("ddfcb697-a1f4-4586-949a-46b3822aab7c")
-    private Des des;
+    private Des des = new Des();
 
     @objid ("6131bad8-bb43-4e49-a9b3-51956e3848d3")
     public void lancerPartie() throws FileNotFoundException, IOException, ParseException {
@@ -34,14 +35,15 @@ public class Partie {
     }
     
     public void initJoueurs() {
-    	Scanner sc = new Scanner(System.in);
+    	
 
     	System.out.print("Nombre de joueur ? (2 à 4)");
     	nbJ = sc.nextInt();
     	System.out.print("Somme de départ pour chaques joueurs ?");
     	int argentDepart = sc.nextInt();
     	for(int i=0;i<nbJ;i++) {
-    		Joueur j = new Joueur();
+    		System.out.print("nom du joueur "+i+" ?");
+    		Joueur j = new Joueur(sc.next(),this);
     		joueurs.add(j);
     		joueurs.get(i).initPositionJoueur(0);
     		joueurs.get(i).initArgent(argentDepart);
@@ -55,12 +57,17 @@ public class Partie {
     	jCourant = random.nextInt(nbJ);
     	boolean endFlag = false;//drapeau de fin de partie
     	while(!endFlag){
+    		System.out.println("C'est au joueur "+jCourant+" ("+this.joueurs.get(jCourant).getName()+") de jouer :");
     		des.lancerDes();
     		plateau.deplacerJoueur(this.joueurs.get(jCourant), des);
     		
-    		actionsPossibles();
+    		
+    		//actionsPossibles();
     		if(!des.verifDouble()) {
+    			
     			jCourant = (jCourant+1)%nbJ;
+    		}else {
+    			System.out.println("C'est un double");
     		}
     		
     		if(verifFin()) {
@@ -76,12 +83,26 @@ public class Partie {
 	}
 
 	private void actionsPossibles() {
-		Scanner sc = new Scanner(System.in);
+		
 		
 	}
 
 	@objid ("014fe146-4f72-4a1c-ae9b-81f0f6fc503e")
-    public void interfaceAcheter() {
+    public boolean interfaceAcheter(long prix) {
+		System.out.println("Voulez vous acheter cette propriété ? prix: "+prix);
+		System.out.println("1 - Acheter");
+		System.out.println("2 - Ne pas acheter");
+		switch(sc.nextInt()) {
+			case 1:
+				return true;
+			 
+		 	case 2:
+		 		return false;
+		 	
+		 	default:
+				System.out.println("Erreur : choix non valide");
+				return false;
+		}
     }
 
     @objid ("912328e1-25dc-402f-8938-c878b8d92373")

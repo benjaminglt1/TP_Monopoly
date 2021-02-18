@@ -19,5 +19,36 @@ public class Services extends Achetables {
 
     @objid ("00fd2f67-549e-4f21-89be-05798f30b96f")
     private Des des;
+    
+    public void actionSurCase(Joueur j) {
+    	if(!estLibre()) {
+    		if(!estProprietaire(j)) {
+    			System.out.println("Payer le loyer");
+    			payerLoyer(j);
+    		}
+    	}
+    	
+    }
 
+    public void payerLoyer(Joueur j) {
+    	long aPayer = calculerLoyer(j);
+    	j.debiter((int) aPayer);
+    	this.getProprietaire().crediter((int) aPayer); 
+    }
+    
+    public long calculerLoyer(Joueur j) {
+		int cptServ=0;
+    	for(int i=0;i<this.services.size();i++){
+			if(this.services.get(i).getProprietaire().equals(this.getProprietaire())) {
+				cptServ++;
+			}
+		}
+    	des.lancerDes();
+    	if(cptServ == 2) {
+    		return 10*(des.getDe1()+des.getDe2());
+    	}else {
+    		return 4*(des.getDe1()+des.getDe2());
+    	}
+    	
+    }
 }
