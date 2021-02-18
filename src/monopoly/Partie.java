@@ -62,7 +62,7 @@ public class Partie {
     		plateau.deplacerJoueur(this.joueurs.get(jCourant), des);
     		
     		
-    		//actionsPossibles();
+    		actionsPossibles();
     		if(!des.verifDouble()) {
     			
     			jCourant = (jCourant+1)%nbJ;
@@ -83,12 +83,65 @@ public class Partie {
 	}
 
 	private void actionsPossibles() {
+		System.out.println("Actions possibles :");
+		System.out.println("1- Construire des maisons");
+		System.out.println("2- Vendre des maisons");
+		System.out.println("3- Vendre des terrains");
+		System.out.println("4- Finir mon tour");
+		switch(sc.nextInt()) {
+			case 1:
+				afficheTerrainsConstructibles();
+				demanderConstruire(this.joueurs.get(jCourant).getProprieteConstructibles().get(sc.nextInt()));
+				
+				break;
+			case 2:
+				afficheTerrainsConstruits();
+				break;
+			case 3:
+				afficheTerrains();
+				break;
+			case 4:
+				break;
+			default:
+				System.out.println("Erreur : Choix non valide");
+				break;
+		}
 		
+		
+	}
+
+	private void demanderConstruire(Propriete propriete) {
+		this.joueurs.get(jCourant).construireMaison(propriete);
+	}
+
+	private void afficheTerrains() {
+		//ArrayList<Achetables> prop = (ArrayList<Achetables>) this.joueurs.get(jCourant).getPropriete();
+		
+	}
+
+	private void afficheTerrainsConstruits() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void afficheTerrainsConstructibles() {
+		ArrayList<Propriete> prop = (ArrayList<Propriete>) this.joueurs.get(jCourant).getProprieteConstructibles();
+		if(prop.size() == 0) {
+			System.out.println("Vous ne possédez pas de propriété constructible");
+		}else {
+			System.out.println("Votre Solde: "+this.joueurs.get(jCourant).getArgent());
+			System.out.println("Liste des propriétés constructibles :");
+			
+			for(int i =0;i<prop.size();i++) {
+				System.out.println((i+1)+"- "+prop.get(i).getNom() + " - Prix Maison: "+prop.get(i).getPrixMaison());
+			}
+		}
 		
 	}
 
 	@objid ("014fe146-4f72-4a1c-ae9b-81f0f6fc503e")
     public boolean interfaceAcheter(long prix) {
+		System.out.println("Votre Solde: "+this.joueurs.get(jCourant).getArgent());
 		System.out.println("Voulez vous acheter cette propriété ? prix: "+prix);
 		System.out.println("1 - Acheter");
 		System.out.println("2 - Ne pas acheter");

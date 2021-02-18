@@ -29,6 +29,11 @@ public class Quartier {
 				return false;
 			}
 		}
+    	
+    	for(int i=0;i<propriete.size();i++) {
+    		this.propriete.get(i).devientConstructible();
+    	}
+    	
     	return true;
     }
 
@@ -47,5 +52,10 @@ public class Quartier {
     void addPropriete(Propriete p) {
     	this.propriete.add(p);
     }
+
+	ArrayList<Propriete> getPropriete() {
+		// TODO Auto-generated method stub
+		return this.propriete;
+	}
 
 }

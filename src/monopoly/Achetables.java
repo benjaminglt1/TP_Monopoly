@@ -18,8 +18,10 @@ public abstract class Achetables extends Case {
 
     @objid ("31d8286f-170f-41ca-8101-7f554cd188ac")
     public boolean estProprietaire(Joueur j) {
-    	if(this.proprietaire.equals(j)) {
-    		return true;
+    	if(this.proprietaire != null) {
+	    	if(this.proprietaire.equals(j)) {
+	    		return true;
+	    	}
     	}
 		return false;
     }

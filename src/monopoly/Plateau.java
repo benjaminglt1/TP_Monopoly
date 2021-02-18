@@ -164,12 +164,15 @@ public class Plateau {
     @objid ("9c7b9ea4-a70d-4f2d-865d-735ebc1f9a87")
     public void deplacerJoueur(Joueur joueur, Des de) {
     	int oldPos = joueur.getPosition();
-    	joueur.setPosition(de.getDe1()+de.getDe2()%40);
+    	System.out.println("oldPos:"+oldPos);
+    	joueur.setPosition((de.getDe1()+de.getDe2())%39);
+    	System.out.println("on avance de "+(de.getDe1()+de.getDe2()));
+    	System.out.println("newPos:"+joueur.getPosition());
     	if(oldPos>joueur.getPosition()) {
     		plateau.get(0).actionSurCase(joueur);
     	}
     	System.out.println("Case : "+(plateau.get(joueur.getPosition())).getNom());
-    	//plateau.get(joueur.getPosition()).actionSurCase(joueur);
+    	plateau.get(joueur.getPosition()).actionSurCase(joueur);
     }
 
 }

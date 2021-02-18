@@ -46,11 +46,12 @@ public class Propriete extends Achetables {
 
 	@objid ("d22f6a51-1d56-47e5-9fc0-d60378bc4bad")
     public boolean construire() {
-		return false;
+		return etat.construire();
     }
 
     @objid ("a3aa700e-0581-43cb-9130-7bc7e8538dfa")
     public void devientConstructible() {
+    	etat.devientConstructible();
     }
 
     @objid ("235082f1-c37c-4131-8f39-91d090d06a5e")
@@ -61,7 +62,6 @@ public class Propriete extends Achetables {
     @objid ("bb16bcc1-f778-42b2-b0be-eb4003fd5e72")
     public void setEtat(Etat etat) {
     	this.etat = etat;
-    	this.etat.setEtat();
     }
 
     @objid ("e1fbe937-96e5-4f5c-8d66-541ffdf508aa")
@@ -92,10 +92,17 @@ public class Propriete extends Achetables {
 	}
 	
 	public void actionSurCase(Joueur j) {
-		if(!this.etat.estProprietaire(j)) {
+		System.out.println("je suis la");
+		if(!this.etat.estProprietaire(j) && this.getProprietaire()!=null) {
 			etat.payerLoyer(j);
+		}else {
+			etat.actionSurCase(j);
 		}
 		
+	}
+	
+	Etat getEtat() {
+		return this.etat;
 	}
 
 	public long getLoyers(int i) {
@@ -103,9 +110,20 @@ public class Propriete extends Achetables {
 		return this.loyers.get(i);
 	}
 
-	public Object getQuartier() {
+	public Quartier getQuartier() {
 		// TODO Auto-generated method stub
 		return this.quartier;
+	}
+
+	public int getPrixMaison() {
+	
+		return (int) this.prixMaison;
+	}
+
+	public void addMaison() {
+		this.nbMaisons+=1;
+		// TODO Auto-generated method stub
+		
 	}
 
 

@@ -44,8 +44,11 @@ public class Etat {
 
     @objid ("ec7b5c78-de3c-449b-af07-4d0668f735e5")
     public boolean estProprietaire(Joueur j) {
-    	if((this.propriete.getProprietaire()).equals(j)) {
-    		return true;
+    	if(this.propriete.getProprietaire() != null) {
+    		System.out.println("ok");
+    		if((this.propriete.getProprietaire()).equals(j)) {
+    			return true;
+    		}
     	}
 		return false;
     }

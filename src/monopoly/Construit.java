@@ -9,6 +9,14 @@ public class Construit extends Etat {
 
     @objid ("49f3dfa3-b151-4fe4-b5de-0cb33f3713dc")
     public boolean construire() {
+    	if(this.propriete.getProprietaire().verifierArgent(this.propriete.getPrixMaison())) {
+    		this.propriete.getProprietaire().debiter(this.propriete.getPrixMaison());
+    		this.propriete.addMaison();
+    		if(this.propriete.getNbMaisons() == 5) {
+    			this.propriete.setEtat(new ConstructionTerminee());
+    		}
+    		return true;
+    	}
 		return false;
     }
 

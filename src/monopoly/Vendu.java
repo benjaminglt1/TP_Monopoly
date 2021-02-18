@@ -7,16 +7,21 @@ public class Vendu extends Etat {
     public void actionSurCase(Joueur joueur) {
     }
 
-    @objid ("49ecab1a-5280-4a8e-9f51-488faa4981a9")
-    public void setEtat() {
+    public Vendu() {
     	estConstructible();
     }
+    @objid ("49ecab1a-5280-4a8e-9f51-488faa4981a9")
+    public void setEtat() {
+    	
+    }
     
-    public void estConstructible() {
+    public boolean estConstructible() {
     	if(!((this.propriete.getQuartier()).verifConstructible())) {
     		this.propriete.setEtat(new NonConstructible());
+    		return false;
     	}else {
-    		this.propriete.setEtat(new Constructible());
+    		
+    		return true;
     	}
     	
     }

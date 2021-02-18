@@ -9,6 +9,14 @@ public class Constructible extends Etat {
 
     @objid ("e71015e9-1620-4a2c-a8d8-6bb738d17d08")
     public boolean construire() {
+    	if(this.propriete.getProprietaire().verifierArgent(this.propriete.getPrixMaison())) {
+    		this.propriete.getProprietaire().debiter(this.propriete.getPrixMaison());
+    		this.propriete.addMaison();
+    		if(this.propriete.getNbMaisons() == 5) {
+    			this.propriete.setEtat(new Construit());
+    		}
+    		return true;
+    	}
 		return false;
     }
 

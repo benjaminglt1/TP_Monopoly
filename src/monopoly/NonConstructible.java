@@ -9,6 +9,7 @@ public class NonConstructible extends Etat {
 
     @objid ("3bf1644d-eb35-484b-bb58-bc60fb939b93")
     public void devientConstructible() {
+    	this.propriete.setEtat(new Constructible());
     }
 
     @objid ("f051e7a7-4baa-455c-b529-e6c2770a4f03")

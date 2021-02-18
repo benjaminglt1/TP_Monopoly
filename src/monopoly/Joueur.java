@@ -43,7 +43,8 @@ public class Joueur {
     }
 
     @objid ("049212bf-1921-4772-b633-66e3b8ca7b24")
-    public void construireMaison(Case c) {
+    public void construireMaison(Propriete p) {
+    	p.construire();
     }
 
     @objid ("51cec632-3125-47cb-8d3f-a25247f3ed7e")
@@ -62,7 +63,7 @@ public class Joueur {
     @objid ("90c250b5-673a-499a-b29a-4021ee8ff81a")
     void setPosition(int value) {
         // Automatically generated method. Please delete this comment before entering specific code.
-        this.position = value;
+        this.position += value;
     }
 
     @objid ("adac272e-ba56-4af8-8621-5f14018b1fab")
@@ -78,12 +79,21 @@ public class Joueur {
     }
 
     @objid ("b8179ed5-63e3-4844-a217-40aa97a86b09")
-    public void verifierArgent() {
+    public boolean verifierArgent(int i) {
+    	return this.argent>i;
     }
 
     @objid ("55335325-66a2-48ab-8921-91c7d15cc459")
     public void ajouterPropriete(Propriete propriete) {
     	this.propriete.add(propriete);
+    }
+    
+    public void ajouterPropriete(Gare gare) {
+    	this.propriete.add(gare);
+    }
+    
+    public void ajouterPropriete(Services serv) {
+    	this.propriete.add(serv);
     }
 
 	public List<Achetables> getPropriete() {
@@ -101,6 +111,18 @@ public class Joueur {
 	Partie getPartie() {
 		return this.partie;
 		
+	}
+
+	public ArrayList<Propriete> getProprieteConstructibles() {
+		ArrayList<Propriete> res = new ArrayList<Propriete>();
+		for(int i=0;i<this.propriete.size();i++) {
+			if(this.propriete.get(i) instanceof Propriete) {
+				if((((Propriete) this.propriete.get(i)).getEtat() instanceof Constructible) || (((Propriete) this.propriete.get(i)).getEtat() instanceof Construit)) {
+					res.add((Propriete) this.propriete.get(i));
+				}
+			}
+		}
+		return res;
 	}
 
 }

@@ -26,11 +26,22 @@ public class Services extends Achetables {
     			System.out.println("Payer le loyer");
     			payerLoyer(j);
     		}
+    	}else {
+    		System.out.println("propriete libre");
+        	if(j.getPartie().interfaceAcheter(this.getPrixAchat())) {
+        		j.debiter((int) this.getPrixAchat());
+        		modifierProprietaire(j);
+        		j.ajouterPropriete(this);
+        	}
     	}
     	
     }
 
-    public void payerLoyer(Joueur j) {
+    private void modifierProprietaire(Joueur j) {
+    	this.proprietaire = j;		
+	}
+
+	public void payerLoyer(Joueur j) {
     	long aPayer = calculerLoyer(j);
     	j.debiter((int) aPayer);
     	this.getProprietaire().crediter((int) aPayer); 
