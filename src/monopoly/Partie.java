@@ -63,6 +63,7 @@ public class Partie {
     		
     		
     		actionsPossibles();
+    		
     		if(!des.verifDouble()) {
     			
     			jCourant = (jCourant+1)%nbJ;
@@ -87,20 +88,29 @@ public class Partie {
 		System.out.println("1- Construire des maisons");
 		System.out.println("2- Vendre des maisons");
 		System.out.println("3- Vendre des terrains");
-		System.out.println("4- Finir mon tour");
+		System.out.println("4- Lister mes propriete");
+		System.out.println("5- Finir mon tour");
 		switch(sc.nextInt()) {
 			case 1:
-				afficheTerrainsConstructibles();
-				demanderConstruire(this.joueurs.get(jCourant).getProprieteConstructibles().get(sc.nextInt()));
+				if(afficheTerrainsConstructibles()) {
+					demanderConstruire(this.joueurs.get(jCourant).getProprieteConstructibles().get(sc.nextInt()-1));
+				}
 				
+				actionsPossibles();
 				break;
 			case 2:
 				afficheTerrainsConstruits();
+				actionsPossibles();
 				break;
 			case 3:
 				afficheTerrains();
+				actionsPossibles();
 				break;
 			case 4:
+				afficheTerrains();
+				actionsPossibles();
+				break;
+			case 5:
 				break;
 			default:
 				System.out.println("Erreur : Choix non valide");
@@ -114,9 +124,19 @@ public class Partie {
 		this.joueurs.get(jCourant).construireMaison(propriete);
 	}
 
-	private void afficheTerrains() {
-		//ArrayList<Achetables> prop = (ArrayList<Achetables>) this.joueurs.get(jCourant).getPropriete();
-		
+	private boolean afficheTerrains() {
+		ArrayList<Achetables> prop = (ArrayList<Achetables>) this.joueurs.get(jCourant).getPropriete();
+		if(prop.size() == 0) {
+			System.out.println("Vous ne possédez pas de propriétés");
+			return false;
+		}else {
+			System.out.println("Liste de vos propriétés :");
+			
+			for(int i =0;i<prop.size();i++) {
+				System.out.println((i+1)+"- "+prop.get(i).getNom());
+			}
+			return true;
+		}
 	}
 
 	private void afficheTerrainsConstruits() {
@@ -124,17 +144,19 @@ public class Partie {
 		
 	}
 
-	private void afficheTerrainsConstructibles() {
+	private boolean afficheTerrainsConstructibles() {
 		ArrayList<Propriete> prop = (ArrayList<Propriete>) this.joueurs.get(jCourant).getProprieteConstructibles();
 		if(prop.size() == 0) {
 			System.out.println("Vous ne possédez pas de propriété constructible");
+			return false;
 		}else {
 			System.out.println("Votre Solde: "+this.joueurs.get(jCourant).getArgent());
 			System.out.println("Liste des propriétés constructibles :");
 			
 			for(int i =0;i<prop.size();i++) {
-				System.out.println((i+1)+"- "+prop.get(i).getNom() + " - Prix Maison: "+prop.get(i).getPrixMaison());
+				System.out.println((i+1)+"- "+prop.get(i).getNom() + " - Prix Maison: "+prop.get(i).getPrixMaison() + " - Nombre de maisons construites: "+prop.get(i).getNbMaisons());
 			}
+			return true;
 		}
 		
 	}

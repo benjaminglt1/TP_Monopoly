@@ -23,11 +23,15 @@ public class Quartier {
     public boolean verifConstructible() {
 		Joueur prop = propriete.get(0).getProprietaire();
     	for(int i=1;i<propriete.size();i++) {
-			if(propriete.get(i).getProprietaire().equals(prop)) {
-				
-			}else {
-				return false;
-			}
+    		if(propriete.get(i).getProprietaire() != null) {
+				if(propriete.get(i).getProprietaire().equals(prop)) {
+					
+				}else {
+					return false;
+				}
+    		}else { 
+    			return false;
+    		}
 		}
     	
     	for(int i=0;i<propriete.size();i++) {

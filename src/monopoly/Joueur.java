@@ -49,7 +49,7 @@ public class Joueur {
 
     @objid ("51cec632-3125-47cb-8d3f-a25247f3ed7e")
     public void crediter(int montant) {
-    	this.argent -= montant;
+    	this.argent += montant;
     }
     
 

@@ -34,7 +34,7 @@ public class Propriete extends Achetables {
 		this.etat = new Libre();
 		this.etat.setPropriete(this);
 		this.color = quartier;
-		for(int i =0;i<loyers.size();i++) {
+		for(int i =0;i<l.size();i++) {
 			loyers.add((Long) l.get(i));
 		}
 		
@@ -62,6 +62,11 @@ public class Propriete extends Achetables {
     @objid ("bb16bcc1-f778-42b2-b0be-eb4003fd5e72")
     public void setEtat(Etat etat) {
     	this.etat = etat;
+    	this.etat.setPropriete(this);
+    	System.out.println("CHANGEMENT D'ETAT -> "+this.etat.getClass().getName());
+    	if(this.etat instanceof Vendu) {
+    		this.etat.estConstructible();
+    	}
     }
 
     @objid ("e1fbe937-96e5-4f5c-8d66-541ffdf508aa")
@@ -92,8 +97,9 @@ public class Propriete extends Achetables {
 	}
 	
 	public void actionSurCase(Joueur j) {
-		System.out.println("je suis la");
+		
 		if(!this.etat.estProprietaire(j) && this.getProprietaire()!=null) {
+			System.out.println("JE DOIS PAYER LE LOYER");
 			etat.payerLoyer(j);
 		}else {
 			etat.actionSurCase(j);
@@ -105,9 +111,9 @@ public class Propriete extends Achetables {
 		return this.etat;
 	}
 
-	public long getLoyers(int i) {
+	public long getLoyers(int index) {
 		// TODO Auto-generated method stub
-		return this.loyers.get(i);
+		return this.loyers.get(index);
 	}
 
 	public Quartier getQuartier() {

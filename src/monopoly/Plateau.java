@@ -45,17 +45,17 @@ public class Plateau {
 			String type = (String) p.get("case");
 			switch(type) {
 				case "depart":
-					System.out.println("depart");
+					//System.out.println("depart");
 					Depart depart = new Depart();
 					plateau.add(depart);
 					break;
 				case "impot":
-					System.out.println("impot");
+					//System.out.println("impot");
 					Impots impot = new Impots(0);
 					plateau.add(impot);
 					break;
 				case "gare":
-					System.out.println("gare");
+					//System.out.println("gare");
 					nom = (String) p.get("nom");
 					prixAchat = (long) p.get("prixAchat");
 					loyers = (JSONArray) p.get("loyers");
@@ -64,7 +64,7 @@ public class Plateau {
 					listGare.add(gare);
 					break;
 				case "service":
-					System.out.println("service");
+					//System.out.println("service");
 					nom = (String) p.get("nom");
 					prixAchat = (long) p.get("prixAchat");
 					Services service = new Services(nom,prixAchat);
@@ -72,7 +72,7 @@ public class Plateau {
 					listServ.add(service);
 					break;
 				case "propriete":
-					System.out.println("propriete");
+					//System.out.println("propriete");
 					nom = (String) p.get("nom");
 					prixAchat = (long) p.get("prixAchat");
 					prixAchatMaison = (long) p.get("prixAchatMaison");
@@ -164,10 +164,10 @@ public class Plateau {
     @objid ("9c7b9ea4-a70d-4f2d-865d-735ebc1f9a87")
     public void deplacerJoueur(Joueur joueur, Des de) {
     	int oldPos = joueur.getPosition();
-    	System.out.println("oldPos:"+oldPos);
+    	//System.out.println("oldPos:"+oldPos);
     	joueur.setPosition((de.getDe1()+de.getDe2())%39);
     	System.out.println("on avance de "+(de.getDe1()+de.getDe2()));
-    	System.out.println("newPos:"+joueur.getPosition());
+    	//System.out.println("newPos:"+joueur.getPosition());
     	if(oldPos>joueur.getPosition()) {
     		plateau.get(0).actionSurCase(joueur);
     	}

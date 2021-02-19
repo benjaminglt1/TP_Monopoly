@@ -12,9 +12,7 @@ public class Constructible extends Etat {
     	if(this.propriete.getProprietaire().verifierArgent(this.propriete.getPrixMaison())) {
     		this.propriete.getProprietaire().debiter(this.propriete.getPrixMaison());
     		this.propriete.addMaison();
-    		if(this.propriete.getNbMaisons() == 5) {
-    			this.propriete.setEtat(new Construit());
-    		}
+    		this.propriete.setEtat(new Construit());
     		return true;
     	}
 		return false;
