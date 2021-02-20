@@ -27,5 +27,12 @@ public class NonConstructible extends Etat {
     @objid ("9fd8306d-2d55-48cc-be04-f4e5a6569e95")
     public void setEtat() {
     }
+    
+    public void vendre() {
+      this.propriete.getProprietaire().crediter((int) this.propriete.getPrixAchat());
+      this.propriete.getProprietaire().vendre(this.propriete);
+      this.propriete.proprietaire = null;
+      this.propriete.setEtat(new Libre());
+	  }
 
 }

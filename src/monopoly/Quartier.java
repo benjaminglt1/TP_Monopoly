@@ -43,13 +43,13 @@ public class Quartier {
 
     @objid ("f33f85df-6fa4-45c0-93bb-8bcee247bd92")
     String getCouleur() {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         return this.couleur;
     }
 
     @objid ("35fa561a-7407-40f5-979e-218db433c88f")
     void setCouleur(String value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         this.couleur = value;
     }
     
@@ -58,7 +58,6 @@ public class Quartier {
     }
 
 	ArrayList<Propriete> getPropriete() {
-		// TODO Auto-generated method stub
 		return this.propriete;
 	}
 

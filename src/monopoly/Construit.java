@@ -35,5 +35,12 @@ public class Construit extends Etat {
     @objid ("7ba064f0-1453-4654-80dd-e8ec02ea1345")
     public void setEtat() {
     }
+    
+    public void vendre() {
+		this.propriete.getProprietaire().crediter((int) this.propriete.getPrixAchat()+(this.propriete.getPrixMaison()*this.propriete.getNbMaisons()));
+		this.propriete.getProprietaire().vendre(this.propriete);
+		this.propriete.proprietaire = null;
+		this.propriete.setEtat(new Libre());
+	}
 
 }

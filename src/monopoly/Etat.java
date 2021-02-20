@@ -62,4 +62,7 @@ public class Etat {
 		
 	}
 
+	public void vendre() {
+	}
+
 }

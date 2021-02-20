@@ -5,9 +5,6 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 public abstract class Achetables extends Case {
     @objid ("554628ea-dc32-42e5-9a0e-fe785f87b9d1")
     protected long prixAchat;
-    
-    //protected String nom;
-
 
     @objid ("3e0a18b8-7367-4ce8-b7a9-8876b6d40334")
     protected Joueur proprietaire = null;
@@ -50,14 +47,17 @@ public abstract class Achetables extends Case {
 
     @objid ("88a2a229-a3b8-40d8-bf02-5f61a849a549")
     long getPrixAchat() {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         return this.prixAchat;
     }
 
     @objid ("ca22947e-6536-4621-b4d1-1706a3cce444")
     void setPrixAchat(int value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         this.prixAchat = value;
     }
+
+	public void vendre() {		
+	}
 
 }

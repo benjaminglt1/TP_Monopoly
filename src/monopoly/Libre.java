@@ -5,7 +5,7 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 public class Libre extends Etat {
     @objid ("274ff6cb-3425-4c6f-b7a3-4f9995260aac")
     public void actionSurCase(Joueur j) {
-    	System.out.println("propriete libre");
+    	System.out.println("\nPropriete libre");
     	if(j.getPartie().interfaceAcheter(this.propriete.getPrixAchat())) {
     		j.debiter((int) this.propriete.getPrixAchat());
     		modifierProprietaire(j);

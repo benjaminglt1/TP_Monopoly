@@ -20,25 +20,25 @@ public class Des {
 
     @objid ("ed603c71-d53a-4ecc-a033-1b42c90b315f")
     int getDe1() {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         return this.de1;
     }
 
     @objid ("2057d91a-6c77-4440-b021-5d2c79bd6875")
     void setDe1(int value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         this.de1 = value;
     }
 
     @objid ("d6523647-57de-433d-a908-8d7be85d8be6")
     int getDe2() {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         return this.de2;
     }
 
     @objid ("0b7c703e-b746-485a-8ebc-645948358561")
     void setDe2(int value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         this.de2 = value;
     }
 

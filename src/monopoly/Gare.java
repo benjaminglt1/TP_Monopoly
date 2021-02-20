@@ -14,7 +14,6 @@ public class Gare extends Achetables {
     private ArrayList<Gare> gare = new ArrayList<Gare>();
 
     public Gare(String nom, long prixAchat, JSONArray l) {
-		// TODO Auto-generated constructor stub
     	this.nom = nom;
     	this.prixAchat = prixAchat;
     	for(int i =0;i<loyers.size();i++) {
@@ -39,8 +38,7 @@ public class Gare extends Achetables {
         		modifierProprietaire(j);
         		j.ajouterPropriete(this);
         	}
-    	}
-    	
+    	}	
     }
     
     private void modifierProprietaire(Joueur j) {
@@ -65,6 +63,12 @@ public class Gare extends Achetables {
     	return this.loyers.get(cptGare);
     	
     }
+    
+    public void vendre() {
+		this.proprietaire.crediter((int) this.prixAchat);
+		this.proprietaire.vendre(this);
+		this.proprietaire = null;
+	}
 	
 
 }

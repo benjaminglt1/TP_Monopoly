@@ -62,4 +62,10 @@ public class Services extends Achetables {
     	}
     	
     }
+    
+    public void vendre() {
+		this.proprietaire.crediter((int) this.prixAchat);
+		this.proprietaire.vendre(this);
+		this.proprietaire = null;
+	}
 }

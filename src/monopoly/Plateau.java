@@ -13,7 +13,6 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 @objid ("62390344-f917-4632-99b2-f2000b666d1f")
 public class Plateau {
 	ArrayList<Case> plateau = new ArrayList<Case>();
-	//ArrayList<Quartier> quartiers = new ArrayList<Quartier>();
 	
 	public Plateau() throws FileNotFoundException, IOException, ParseException{
 		ArrayList<Gare> listGare = new ArrayList<Gare>();
@@ -115,11 +114,7 @@ public class Plateau {
 				default:
 					System.err.println("Erreur : Case non prise en compte");	
 					break;
-			}
-			
-			
-			//System.out.println(p.toString());
-			
+			}			
 		}
 		
 		for(int i = 0;i<plateau.size();i++) {
@@ -164,10 +159,8 @@ public class Plateau {
     @objid ("9c7b9ea4-a70d-4f2d-865d-735ebc1f9a87")
     public void deplacerJoueur(Joueur joueur, Des de) {
     	int oldPos = joueur.getPosition();
-    	//System.out.println("oldPos:"+oldPos);
     	joueur.setPosition((de.getDe1()+de.getDe2())%39);
-    	System.out.println("on avance de "+(de.getDe1()+de.getDe2()));
-    	//System.out.println("newPos:"+joueur.getPosition());
+    	System.out.println("Vous lancez les dés et avancez de "+(de.getDe1()+de.getDe2())+" cases");
     	if(oldPos>joueur.getPosition()) {
     		plateau.get(0).actionSurCase(joueur);
     	}

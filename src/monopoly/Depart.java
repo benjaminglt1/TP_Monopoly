@@ -12,13 +12,13 @@ public class Depart extends Action {
 
     @objid ("9b176622-a745-4cec-9c41-3f1888261674")
     int getArgentAjoute() {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         return this.argentAjoute;
     }
 
     @objid ("8f0152e8-0efd-46f1-bbe3-502a75db11d3")
     void setArgentAjoute(int value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         this.argentAjoute = value;
     }
     

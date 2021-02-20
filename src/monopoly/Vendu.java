@@ -22,10 +22,6 @@ public class Vendu extends Etat {
     		
     		return true;
     	}
-    	
-    	
-    	//System.out.println("verifConstructible" + (this.propriete.getQuartier()).verifConstructible());
-    	//return false;
     }
 
     public void devientConstructible() {

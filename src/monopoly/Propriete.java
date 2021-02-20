@@ -40,10 +40,6 @@ public class Propriete extends Achetables {
 		
 	}
 
-	public Propriete() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@objid ("d22f6a51-1d56-47e5-9fc0-d60378bc4bad")
     public boolean construire() {
 		return etat.construire();
@@ -54,6 +50,9 @@ public class Propriete extends Achetables {
     	etat.devientConstructible();
     }
 
+    public void vendre() {
+		etat.vendre();
+	}
     @objid ("235082f1-c37c-4131-8f39-91d090d06a5e")
     public boolean estConstructible() {
     	return false;
@@ -71,18 +70,18 @@ public class Propriete extends Achetables {
 
     @objid ("e1fbe937-96e5-4f5c-8d66-541ffdf508aa")
     int getNbMaisons() {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         return this.nbMaisons;
     }
     
     String getColor() {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         return this.color;
     }
 
     @objid ("0455c72d-a10c-4487-9828-9c7f403a9c59")
     void setNbMaisons(int value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         this.nbMaisons = value;
     }
 
@@ -99,7 +98,7 @@ public class Propriete extends Achetables {
 	public void actionSurCase(Joueur j) {
 		
 		if(!this.etat.estProprietaire(j) && this.getProprietaire()!=null) {
-			System.out.println("JE DOIS PAYER LE LOYER");
+			System.out.println("Cette propriete ne vous appartient pas vous devez donc payer le loyer");
 			etat.payerLoyer(j);
 		}else {
 			etat.actionSurCase(j);
@@ -112,24 +111,19 @@ public class Propriete extends Achetables {
 	}
 
 	public long getLoyers(int index) {
-		// TODO Auto-generated method stub
 		return this.loyers.get(index);
 	}
 
 	public Quartier getQuartier() {
-		// TODO Auto-generated method stub
 		return this.quartier;
 	}
 
 	public int getPrixMaison() {
-	
 		return (int) this.prixMaison;
 	}
 
 	public void addMaison() {
-		this.nbMaisons+=1;
-		// TODO Auto-generated method stub
-		
+		this.nbMaisons+=1;		
 	}
 
 

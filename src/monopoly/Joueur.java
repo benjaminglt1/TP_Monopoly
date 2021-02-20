@@ -56,25 +56,25 @@ public class Joueur {
     @objid ("a64d49ef-9838-4fff-851f-0d2c8dce8387")
 	public
     int getPosition() {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         return this.position;
     }
 
     @objid ("90c250b5-673a-499a-b29a-4021ee8ff81a")
     void setPosition(int value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         this.position += value;
     }
 
     @objid ("adac272e-ba56-4af8-8621-5f14018b1fab")
     int getArgent() {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         return this.argent;
     }
 
     @objid ("47c89d4e-15ae-4ee7-9142-1a3f3a47dba3")
     void setArgent(int value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
+        
         this.argent = value;
     }
 
@@ -123,6 +123,21 @@ public class Joueur {
 			}
 		}
 		return res;
+	}
+
+	public void vendre(Case p) {
+		for(int i =0;i<this.propriete.size();i++) {
+			if(this.propriete.get(i).nom == p.nom) {
+				this.propriete.remove(i);
+			}
+		}
+	}
+
+	public void clearPropriete() {
+		for(int i=0;i<this.propriete.size();i++) {
+			this.propriete.get(i).vendre();
+		}
+		
 	}
 
 }

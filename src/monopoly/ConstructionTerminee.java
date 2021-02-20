@@ -22,5 +22,12 @@ public class ConstructionTerminee extends Etat {
     @objid ("7e191488-a1c4-44fb-a310-a374a34a4d94")
     public void setEtat() {
     }
+    
+    public void vendre() {
+      this.propriete.getProprietaire().crediter((int) this.propriete.getPrixAchat()+(this.propriete.getPrixMaison()*this.propriete.getNbMaisons()));
+      this.propriete.getProprietaire().vendre(this.propriete);
+      this.propriete.proprietaire = null;
+      this.propriete.setEtat(new Libre());
+	  }
 
 }
