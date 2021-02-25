@@ -24,22 +24,10 @@ public class Des {
         return this.de1;
     }
 
-    @objid ("2057d91a-6c77-4440-b021-5d2c79bd6875")
-    void setDe1(int value) {
-        
-        this.de1 = value;
-    }
-
     @objid ("d6523647-57de-433d-a908-8d7be85d8be6")
     int getDe2() {
         
         return this.de2;
-    }
-
-    @objid ("0b7c703e-b746-485a-8ebc-645948358561")
-    void setDe2(int value) {
-        
-        this.de2 = value;
     }
 
 	public boolean verifDouble() {
@@ -48,6 +36,12 @@ public class Des {
 		}else {
 			return false;
 		}
+	}
+
+	public void lancerDes(int i,int j) {
+		de1 = i;
+		de2 = j;
+		
 	}
 
 }

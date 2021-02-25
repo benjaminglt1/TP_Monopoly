@@ -14,6 +14,13 @@ public class Libre extends Etat {
     	}
     	
     }
+    
+    public void actionSurCaseP(Joueur j) {
+    	j.debiter((int) this.propriete.getPrixAchat());
+		modifierProprietaire(j);
+		j.ajouterPropriete(this.propriete);
+		this.propriete.setEtat(new Vendu());
+    }
 
     @objid ("2ae3ae28-798e-4e17-b17d-c20b426f5760")
     public boolean acheter() {
@@ -32,10 +39,6 @@ public class Libre extends Etat {
     
     public boolean estLibre() {
     	return true;
-    }
-
-    @objid ("332d5648-c2de-424c-a489-eda87f1ca058")
-    public void setEtat() {
     }
 
 }

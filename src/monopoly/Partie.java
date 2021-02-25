@@ -30,9 +30,10 @@ public class Partie {
     public void lancerPartie() throws FileNotFoundException, IOException, ParseException {
     	plateau = new Plateau();
     	System.err.println("Initialisation de la Partie:\n");
+    	
     	initJoueurs();
     	
-    	System.err.println("\nLa Partie commence:\n");
+    	//System.err.println("\nLa Partie commence:\n");
     	jouerJoueur();
     }
     
@@ -190,17 +191,192 @@ public class Partie {
 		}
     }
 
-    @objid ("912328e1-25dc-402f-8938-c878b8d92373")
-    public void demanderConstruire() {
-    }
-
-    @objid ("7fdce396-f2f4-4d16-823b-b675424d502d")
-    public void interfaceLancerDes() {
-    }
     
     public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
 		Partie p = new Partie();
-		p.lancerPartie();	
+		System.out.println("Quelle partie commencer ?");
+		System.out.println("1- User Storie 1 inc 1");
+		System.out.println("2- User Storie 2 inc 1");
+		System.out.println("3- User Storie 1/2 inc 2");
+		System.out.println("4- User Storie 3 inc 2");
+		System.out.println("5- User Storie 4 inc 2");
+		System.out.println("6- User Storie 5 inc 2");
+		System.out.println("7- Partie Classique");
+	
+		p.lancerPartie(p.sc.nextInt());	
+	}
+
+	private void lancerPartie(int choix) throws FileNotFoundException, IOException, ParseException {
+		switch(choix) {
+		
+		case 7:
+			this.lancerPartie();
+			break;
+		default:
+			this.lancerPartieUS(choix);
+			break;
+		
+	}
+		
+	}
+	
+	private void lancerPartieUS(int choix) throws FileNotFoundException, IOException, ParseException {
+		plateau = new Plateau();
+    	System.err.println("Initialisation de la Partie:\n");
+    	initJoueurs(3);
+    	
+    	System.err.println("\nLa Partie commence:\n");
+    	jouerJoueurUS(choix);
+	}
+
+	private void jouerJoueurUS(int choix) {
+		switch(choix) {
+			case 1:
+				jCourant = 0;
+				System.out.println("\nC'est au joueur "+(jCourant+1)+" ("+this.joueurs.get(jCourant).getName()+") de jouer :");
+	    		des.lancerDes(0,0);
+	    		plateau.deplacerJoueur(this.joueurs.get(jCourant), des);
+	    		actionsPossibles();
+	    		jCourant++;
+	    		System.out.println("\nC'est au joueur "+(jCourant+1)+" ("+this.joueurs.get(jCourant).getName()+") de jouer :");
+	    		des.lancerDes(0,0);
+	    		plateau.deplacerJoueur(this.joueurs.get(jCourant), des);
+	    		actionsPossibles();
+	    		jCourant++;
+	    		System.out.println("\nC'est au joueur "+(jCourant+1)+" ("+this.joueurs.get(jCourant).getName()+") de jouer :");
+	    		des.lancerDes(0,0);
+	    		plateau.deplacerJoueur(this.joueurs.get(jCourant), des);
+	    		actionsPossibles();
+	    		
+	    		System.err.println("User storie 1 inc 1 terminée");
+				break;
+				
+			case 2:
+				jCourant = 0;
+				System.out.println("\nC'est au joueur "+(jCourant+1)+" ("+this.joueurs.get(jCourant).getName()+") de jouer :");
+	    		des.lancerDes(6,0);
+	    		afficheSolde(0);
+	    		plateau.deplacerJoueur(this.joueurs.get(jCourant), des);
+	    		afficheSolde(0);
+	    		actionsPossibles();
+	    		jCourant++;
+	    		System.out.println("\nC'est au joueur "+(jCourant+1)+" ("+this.joueurs.get(jCourant).getName()+") de jouer :");
+	    		System.err.println("User storie 2 inc 1 terminée");
+	    		break;
+	    		
+	    		//39-37
+			case 3:
+				jCourant = 1;
+				((Propriete) plateau.plateau.get(37)).getEtat().actionSurCaseP(this.joueurs.get(jCourant));
+				System.out.println("\nC'est au joueur "+(jCourant+1)+" ("+this.joueurs.get(jCourant).getName()+") de jouer :");
+	    		this.joueurs.get(jCourant).setPosition(37);
+	    		
+	    		des.lancerDes(2,0);
+	    		plateau.deplacerJoueur(this.joueurs.get(jCourant), des);
+	    		actionsPossibles();
+	    		System.err.println("User storie 1 inc 2 terminée");
+	    		
+	    		jCourant++;
+	    		System.out.println("\nC'est au joueur "+(jCourant+1)+" ("+this.joueurs.get(jCourant).getName()+") de jouer :");
+	    		
+	    		this.joueurs.get(jCourant).setPosition(37);
+	    		des.lancerDes(2,0);
+	    		//solde theo avant // solde luc avant
+	    		afficheSolde(1,2);
+	    		plateau.deplacerJoueur(this.joueurs.get(jCourant), des);
+	    		///solde theo après // solde luc après
+	    		afficheSolde(1,2);
+	    		actionsPossibles();
+	    		System.err.println("User storie 2 inc 2 terminée");
+	    		break;
+	    		
+			case 4:
+				jCourant = 2;
+				((Services) plateau.plateau.get(28)).actionSurCaseP(this.joueurs.get(jCourant));
+	    		
+	    		jCourant = 0;
+				System.out.println("\nC'est au joueur "+(jCourant+1)+" ("+this.joueurs.get(jCourant).getName()+") de jouer :");
+	    		des.lancerDes(28,0);
+	    		afficheSolde(2,0);
+	    		plateau.deplacerJoueur(this.joueurs.get(jCourant), des);
+	    		afficheSolde(2,0);
+	    		actionsPossibles();
+				
+	    		System.err.println("User storie 3 inc 2 terminée");
+				break;
+			
+			case 5:
+				jCourant = 0;
+				((Gare) plateau.plateau.get(5)).actionSurCaseP(this.joueurs.get(jCourant));
+				((Gare) plateau.plateau.get(15)).actionSurCaseP(this.joueurs.get(jCourant));
+				((Gare) plateau.plateau.get(25)).actionSurCaseP(this.joueurs.get(jCourant));
+	    		
+	    		jCourant++;
+	    		((Propriete) plateau.plateau.get(1)).getEtat().actionSurCaseP(this.joueurs.get(jCourant));
+	    		((Propriete) plateau.plateau.get(3)).getEtat().actionSurCaseP(this.joueurs.get(jCourant));
+	    		((Propriete) plateau.plateau.get(37)).getEtat().actionSurCaseP(this.joueurs.get(jCourant));
+	    		((Propriete) plateau.plateau.get(39)).getEtat().actionSurCaseP(this.joueurs.get(jCourant));
+	    		System.out.println("\nC'est au joueur "+(jCourant+1)+" ("+this.joueurs.get(jCourant).getName()+") de jouer :");
+	    		des.lancerDes(5,0);
+	    		afficheSolde(0,1);
+	    		plateau.deplacerJoueur(this.joueurs.get(jCourant), des);
+	    		afficheSolde(0,1);
+	    		actionsPossibles();
+	    		System.err.println("User storie 4 inc 2 terminée");
+				break;
+				
+			case 6:
+				jCourant = 1;
+				
+	    		((Propriete) plateau.plateau.get(37)).getEtat().actionSurCaseP(this.joueurs.get(jCourant));
+				((Propriete) plateau.plateau.get(39)).getEtat().actionSurCaseP(this.joueurs.get(jCourant));	
+	    		
+	    		jCourant++;
+	    		System.out.println("\nC'est au joueur "+(jCourant+1)+" ("+this.joueurs.get(jCourant).getName()+") de jouer :");
+	    		this.joueurs.get(jCourant).setPosition(37);
+	    		des.lancerDes(2,0);
+	    		
+	    		afficheSolde(1,2);
+	    		//solde theo avant // solde luc avant
+	    		plateau.deplacerJoueur(this.joueurs.get(jCourant), des);
+	    		afficheSolde(1,2);
+	    		///solde theo après // solde luc après
+	    		actionsPossibles();
+	    		System.err.println("User storie 5 inc 2 terminée");
+				break;
+		}
+		
+		
+	}
+
+	private void afficheSolde(int i, int j) {
+		System.out.println("\nSolde des deux joueurs :");
+		System.out.println("Solde "+ this.joueurs.get(i).getName() + " = " + this.joueurs.get(i).getArgent());
+		System.out.println("Solde "+ this.joueurs.get(j).getName() + " = " + this.joueurs.get(j).getArgent());
+	}
+	
+	private void afficheSolde(int i) {
+		System.out.println("\nSolde du joueur :");
+		System.out.println("Solde "+ this.joueurs.get(i).getName() + " = " + this.joueurs.get(i).getArgent());
+	}
+
+	private void initJoueurs(int i) {
+    	int argentDepart = 1000000;
+    	Joueur x = new Joueur("Paul",this);
+    	joueurs.add(x);
+    	joueurs.get(0).initPositionJoueur(0);
+    	joueurs.get(0).initArgent(argentDepart);
+    	
+    	Joueur y = new Joueur("Luc",this);
+    	joueurs.add(y);
+    	joueurs.get(1).initPositionJoueur(0);
+    	joueurs.get(1).initArgent(argentDepart);
+    	
+    	Joueur z = new Joueur("Théo",this);
+    	joueurs.add(z);
+    	joueurs.get(2).initPositionJoueur(0);
+    	joueurs.get(2).initArgent(argentDepart);
+		
 	}
     
     

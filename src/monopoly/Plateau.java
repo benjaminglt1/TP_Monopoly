@@ -160,7 +160,7 @@ public class Plateau {
     public void deplacerJoueur(Joueur joueur, Des de) {
     	int oldPos = joueur.getPosition();
     	joueur.setPosition((de.getDe1()+de.getDe2())%39);
-    	System.out.println("Vous lancez les dés et avancez de "+(de.getDe1()+de.getDe2())+" cases");
+    	System.out.println("\nVous lancez les dés et avancez de "+(de.getDe1()+de.getDe2())+" cases");
     	if(oldPos>joueur.getPosition()) {
     		plateau.get(0).actionSurCase(joueur);
     	}

@@ -3,9 +3,6 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("eedbb245-3fcf-4834-8343-d6daee850c64")
 public class Construit extends Etat {
-    @objid ("0ba70016-fabb-46d9-80d1-877147845549")
-    public void actionSurCase(Joueur joueur) {
-    }
 
     @objid ("49f3dfa3-b151-4fe4-b5de-0cb33f3713dc")
     public boolean construire() {

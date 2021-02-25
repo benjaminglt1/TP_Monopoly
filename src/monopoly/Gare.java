@@ -16,7 +16,7 @@ public class Gare extends Achetables {
     public Gare(String nom, long prixAchat, JSONArray l) {
     	this.nom = nom;
     	this.prixAchat = prixAchat;
-    	for(int i =0;i<loyers.size();i++) {
+    	for(int i =0;i<l.size();i++) {
 			loyers.add((Long) l.get(i));
 		}
 	}
@@ -28,11 +28,11 @@ public class Gare extends Achetables {
     public void actionSurCase(Joueur j) {
     	if(!estLibre()) {
     		if(!estProprietaire(j)) {
-    			System.out.println("Payer le loyer");
+    			System.out.println("\nCette gare ne vous appartient pas, vous devez payez le loyer");
     			payerLoyer(j);
     		}
     	}else {
-    		System.out.println("propriete libre");
+    		System.out.println("\nPropriete libre");
         	if(j.getPartie().interfaceAcheter(this.getPrixAchat())) {
         		j.debiter((int) this.getPrixAchat());
         		modifierProprietaire(j);
@@ -53,11 +53,13 @@ public class Gare extends Achetables {
     }
     
     public long calculerLoyer(Joueur j) {
-		int cptGare=0;
+		int cptGare=-1;
     	for(int i=0;i<this.gare.size();i++){
+    		if(gare.get(i).getProprietaire()!=null) {
 			if(gare.get(i).getProprietaire().equals(this.getProprietaire())) {
 				cptGare++;
 			}
+    		}
 		}
     	
     	return this.loyers.get(cptGare);
@@ -68,6 +70,12 @@ public class Gare extends Achetables {
 		this.proprietaire.crediter((int) this.prixAchat);
 		this.proprietaire.vendre(this);
 		this.proprietaire = null;
+	}
+
+	public void actionSurCaseP(Joueur j) {
+		j.debiter((int) this.getPrixAchat());
+		modifierProprietaire(j);
+		j.ajouterPropriete(this);
 	}
 	
 

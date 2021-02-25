@@ -11,23 +11,23 @@ public class Services extends Achetables {
 	}
 
 	@objid ("602b997c-996e-46cc-ac2c-6fec1512a5d8")
-    private ArrayList<Services> services = new ArrayList<Services> ();
+    private ArrayList<Services> services = new ArrayList<Services>();
 	
 	public void updateService(ArrayList<Services> s) {
 		this.services = s;
 	}
 
     @objid ("00fd2f67-549e-4f21-89be-05798f30b96f")
-    private Des des;
+    private Des des = new Des();
     
     public void actionSurCase(Joueur j) {
     	if(!estLibre()) {
     		if(!estProprietaire(j)) {
-    			System.out.println("Payer le loyer");
+    			System.out.println("\nCe service ne vous appartient pas, Vous devez payer le loyer");
     			payerLoyer(j);
     		}
     	}else {
-    		System.out.println("propriete libre");
+    		System.out.println("\nPropriete libre");
         	if(j.getPartie().interfaceAcheter(this.getPrixAchat())) {
         		j.debiter((int) this.getPrixAchat());
         		modifierProprietaire(j);
@@ -49,13 +49,13 @@ public class Services extends Achetables {
     
     public long calculerLoyer(Joueur j) {
 		int cptServ=0;
-    	for(int i=0;i<this.services.size();i++){
-			if(this.services.get(i).getProprietaire().equals(this.getProprietaire())) {
-				cptServ++;
-			}
+		if(this.services.get(0).getProprietaire()!=null&&this.services.get(1).getProprietaire()!=null) {
+		if(this.services.get(0).getProprietaire().equals(this.services.get(1).getProprietaire())){
+			cptServ++;
+		}
 		}
     	des.lancerDes();
-    	if(cptServ == 2) {
+    	if(cptServ == 1) {
     		return 10*(des.getDe1()+des.getDe2());
     	}else {
     		return 4*(des.getDe1()+des.getDe2());
@@ -67,5 +67,12 @@ public class Services extends Achetables {
 		this.proprietaire.crediter((int) this.prixAchat);
 		this.proprietaire.vendre(this);
 		this.proprietaire = null;
+	}
+
+	public void actionSurCaseP(Joueur j) {
+		j.debiter((int) this.getPrixAchat());
+		modifierProprietaire(j);
+		j.ajouterPropriete(this);
+		
 	}
 }

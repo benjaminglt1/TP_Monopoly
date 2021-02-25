@@ -98,7 +98,7 @@ public class Propriete extends Achetables {
 	public void actionSurCase(Joueur j) {
 		
 		if(!this.etat.estProprietaire(j) && this.getProprietaire()!=null) {
-			System.out.println("Cette propriete ne vous appartient pas vous devez donc payer le loyer");
+			System.out.println("\nCette propriete ne vous appartient pas, vous devez donc payer le loyer");
 			etat.payerLoyer(j);
 		}else {
 			etat.actionSurCase(j);

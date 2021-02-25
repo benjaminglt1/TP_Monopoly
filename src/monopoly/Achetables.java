@@ -40,7 +40,6 @@ public abstract class Achetables extends Case {
     public boolean estLibre() {
 		if(this.proprietaire != null) {
 			return false;
-			
 		}
 		return true;
     }
